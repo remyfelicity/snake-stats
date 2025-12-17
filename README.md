@@ -1,3 +1,3 @@
-# snake-stats
+# Snake Stats
 
 PyPI package comparison
