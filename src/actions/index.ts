@@ -9,6 +9,8 @@ const PackageData = z.object({
       downloads: z.number(),
     }),
   ),
+  package: z.string(),
+  type: z.string(),
 });
 
 export const server = {
