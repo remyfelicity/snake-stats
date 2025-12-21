@@ -1,20 +1,32 @@
 import { XMarkIcon } from "@heroicons/react/20/solid";
+import { navigate } from "astro:transitions/client";
 import { useState, type FormEvent } from "react";
 
-export function App(props: { packages: string[] }) {
+function updateRoute(packages: string[]) {
+  const slug = packages.join("+");
+  const url = slug ? `/${slug}` : "/";
+  navigate(url);
+}
+
+export function App({ packages }: { packages: string[] }) {
   const [input, setInput] = useState("");
-  const [packages, setPackages] = useState(props.packages);
 
   async function handleAddPackage(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    if (!input.trim()) return;
+    if (packages.includes(input)) return;
+
+    const newPackages = [...packages, input].toSorted();
+    updateRoute(newPackages);
     setInput("");
-    if (!packages.includes(input)) {
-      setPackages([...packages, input].toSorted());
-    }
   }
 
   function handleRemovePackage(packageToRemove: string) {
-    setPackages(packages.filter((package_) => package_ !== packageToRemove));
+    const newPackages = packages.filter(
+      (package_) => package_ !== packageToRemove,
+    );
+    updateRoute(newPackages);
   }
 
   return (

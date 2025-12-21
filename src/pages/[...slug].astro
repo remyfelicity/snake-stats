@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import { App } from "../components/App";
 import "../styles/global.css";
 
@@ -15,8 +16,10 @@ const packages = slug ? slug.split("+") : [];
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
+
+    <ClientRouter />
   </head>
   <body>
-    <App client:only="react" packages={packages} />
+    <App client:load packages={packages} />
   </body>
 </html>
