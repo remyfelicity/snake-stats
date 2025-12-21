@@ -15,7 +15,13 @@ const packages = slug ? slug.split("+") : [];
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>
+      {
+        packages.length == 0
+          ? "Snake Stats"
+          : `${packages.join(", ")} | Snake Stats`
+      }
+    </title>
 
     <ClientRouter />
   </head>
