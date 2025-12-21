@@ -1,6 +1,11 @@
 ---
 import { App } from "../components/App";
 import "../styles/global.css";
+
+export const prerender = false;
+
+const { slug } = Astro.params;
+const packages = slug ? slug.split("+") : [];
 ---
 
 <html lang="en">
@@ -12,6 +17,6 @@ import "../styles/global.css";
     <title>Astro</title>
   </head>
   <body>
-    <App client:only="react" />
+    <App client:only="react" packages={packages} />
   </body>
 </html>

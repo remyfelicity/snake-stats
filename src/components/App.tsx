@@ -1,9 +1,9 @@
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import { useState, type FormEvent } from "react";
 
-export function App() {
+export function App(props: { packages: string[] }) {
   const [input, setInput] = useState("");
-  const [packages, setPackages] = useState<string[]>([]);
+  const [packages, setPackages] = useState(props.packages);
 
   async function handleAddPackage(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
