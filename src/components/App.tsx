@@ -1,25 +1,7 @@
 import { XMarkIcon } from "@heroicons/react/20/solid";
-import {
-  CategoryAxisModule,
-  LegendModule,
-  LineSeriesModule,
-  ModuleRegistry,
-  NumberAxisModule,
-  TimeAxisModule,
-  type AgCartesianChartOptions,
-} from "ag-charts-community";
-import { AgCharts } from "ag-charts-react";
 import { navigate } from "astro:transitions/client";
 import { useState, type FormEvent } from "react";
 import { type getPackageData } from "../lib/package-data";
-
-ModuleRegistry.registerModules([
-  CategoryAxisModule,
-  LegendModule,
-  LineSeriesModule,
-  NumberAxisModule,
-  TimeAxisModule,
-]);
 
 function updateRoute(packages: string[]) {
   const slug = packages.join("+");
@@ -35,22 +17,6 @@ export function App({
   packageData: Awaited<ReturnType<typeof getPackageData>>;
 }) {
   const [input, setInput] = useState("");
-  const [chartOptions, setChartOptions] = useState<AgCartesianChartOptions>({
-    axes: { x: { nice: false } },
-    data: packageData,
-    padding: {
-      left: 0,
-      right: 0,
-    },
-    series: packages.map((package_) => ({
-      interpolation: { type: "smooth" },
-      marker: { enabled: false },
-      type: "line",
-      xKey: "date",
-      yKey: package_,
-      yName: package_,
-    })),
-  });
 
   async function handleAddPackage(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -98,9 +64,6 @@ export function App({
           </div>
         ))}
       </div>
-      {packages.length === 0 ? null : (
-        <AgCharts className="mt-4 h-64 md:h-128" options={chartOptions} />
-      )}
     </div>
   );
 }
