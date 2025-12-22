@@ -44,7 +44,7 @@ export async function getPackageData(packages: string[]) {
     .entries()
     .toArray()
     .map(([date, downloadRecord]) => ({
-      date: new Date(date),
+      date: new Date(date).getTime(),
       ...downloadRecord,
     }));
   return aggregatedPackageData;

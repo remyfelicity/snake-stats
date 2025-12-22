@@ -1,6 +1,7 @@
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import { navigate } from "astro:transitions/client";
 import { useState, type FormEvent } from "react";
+import { CartesianGrid, Legend, Line, LineChart, XAxis, YAxis } from "recharts";
 import { type getPackageData } from "../lib/package-data";
 
 function updateRoute(packages: string[]) {
@@ -64,6 +65,46 @@ export function App({
           </div>
         ))}
       </div>
+      {packages.length === 0 ? null : (
+        <LineChart
+          className="mt-8 h-96 w-full md:h-128"
+          data={packageData}
+          responsive
+        >
+          <CartesianGrid />
+          <Legend />
+          <XAxis
+            dataKey="date"
+            domain={["dataMin", "dataMax"]}
+            tickFormatter={(date) =>
+              new Intl.DateTimeFormat("en-US", {
+                day: "2-digit",
+                month: "short",
+              }).format(new Date(date))
+            }
+            type="number"
+          />
+          <YAxis
+            tickFormatter={(downloadCount) =>
+              new Intl.NumberFormat("en-US", {
+                compactDisplay: "short",
+                notation: "compact",
+              }).format(downloadCount)
+            }
+            width={48}
+          />
+          {packages.map((package_) => (
+            <Line
+              dataKey={package_}
+              dot={false}
+              key={package_}
+              name={package_}
+              strokeWidth="2"
+              type="monotone"
+            />
+          ))}
+        </LineChart>
+      )}
     </div>
   );
 }
