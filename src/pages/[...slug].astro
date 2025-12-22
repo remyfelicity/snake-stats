@@ -1,41 +1,14 @@
 ---
-import { z } from "astro/zod";
 import { ClientRouter } from "astro:transitions";
 import { App } from "../components/App";
+import { getPackageData } from "../lib/package-data";
 import "../styles/global.css";
 
 export const prerender = false;
 
 const { slug } = Astro.params;
 const packages = slug ? slug.split("+") : [];
-
-const PackageData = z.object({
-  data: z.array(
-    z.object({
-      category: z.string(),
-      date: z.string(),
-      downloads: z.number(),
-    }),
-  ),
-  package: z.string(),
-  type: z.string(),
-});
-
-async function getPackageData(package_: string) {
-  try {
-    const response = await fetch(
-      `https://pypistats.org/api/packages/${package_}/overall?mirrors=false`,
-    );
-    const data = await response.json();
-    return PackageData.parse(data);
-  } catch (_) {
-    return null;
-  }
-}
-
-const packagesData = (
-  await Promise.all(packages.map((package_) => getPackageData(package_)))
-).filter((package_) => package_ !== null);
+const packageData = await getPackageData(packages);
 ---
 
 <html lang="en">
@@ -55,6 +28,6 @@ const packagesData = (
     <ClientRouter />
   </head>
   <body>
-    <App client:load packages={packages} />
+    <App client:load packages={packages} packageData={packageData} />
   </body>
 </html>
