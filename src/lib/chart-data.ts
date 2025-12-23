@@ -50,7 +50,8 @@ export async function getChartData(packages: string[]) {
     .map(([date, downloadCounts]) => ({
       _date: new Date(date).getTime(),
       ...downloadCounts,
-    }));
+    }))
+    .toSorted((a, b) => a._date - b._date);
 }
 
 export type ChartData = Awaited<ReturnType<typeof getChartData>>;
