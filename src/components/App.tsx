@@ -4,18 +4,18 @@ import { useState, type FormEvent } from "react";
 import { CartesianGrid, Legend, Line, LineChart, XAxis, YAxis } from "recharts";
 import { type ChartData } from "../lib/chart-data";
 
-function updateRoute(packages: string[]) {
-  const slug = packages.join("+");
-  const url = slug ? `/${slug}` : "/";
-  navigate(url);
-}
-
-const chartLineColors = [
+const CHART_LINE_COLORS = [
   "oklch(58.8% 0.158 241.966)",
   "oklch(66.6% 0.179 58.318)",
   "oklch(59.6% 0.145 163.225)",
   "oklch(58.6% 0.253 17.585)",
 ];
+
+function updateRoute(packages: string[]) {
+  const slug = packages.join("+");
+  const url = slug ? `/${slug}` : "/";
+  navigate(url);
+}
 
 export function App({
   packages,
@@ -107,7 +107,7 @@ export function App({
               dot={false}
               key={package_}
               name={package_}
-              stroke={chartLineColors[i]}
+              stroke={CHART_LINE_COLORS[i]}
               strokeWidth="2"
               type="monotone"
             />
