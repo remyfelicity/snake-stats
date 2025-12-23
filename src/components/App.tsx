@@ -12,9 +12,9 @@ function updateRoute(packages: string[]) {
 
 const chartLineColors = [
   "oklch(58.8% 0.158 241.966)",
+  "oklch(66.6% 0.179 58.318)",
   "oklch(59.6% 0.145 163.225)",
   "oklch(58.6% 0.253 17.585)",
-  "oklch(66.6% 0.179 58.318)",
 ];
 
 export function App({
