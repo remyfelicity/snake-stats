@@ -1,7 +1,16 @@
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import { navigate } from "astro:transitions/client";
 import { useState, type FormEvent } from "react";
-import { CartesianGrid, Legend, Line, LineChart, XAxis, YAxis } from "recharts";
+import {
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  Tooltip,
+  XAxis,
+  YAxis,
+  type TooltipContentProps,
+} from "recharts";
 import { type ChartData } from "../lib/chart-data";
 
 const CHART_LINE_COLORS = [
@@ -15,6 +24,36 @@ function updateRoute(packages: string[]) {
   const slug = packages.join("+");
   const url = slug ? `/${slug}` : "/";
   navigate(url);
+}
+
+function CustomTooltip({
+  active,
+  payload,
+  label,
+}: TooltipContentProps<string | number, string>) {
+  if (!active || !payload || !payload.length) {
+    return null;
+  }
+
+  const formattedDate = new Intl.DateTimeFormat("en-US", {
+    dateStyle: "medium",
+  }).format(new Date(label!));
+  return (
+    <div className="rounded border border-gray-300 bg-white p-2">
+      <p className="font-medium">{formattedDate}</p>
+      {payload.map((entry) => {
+        const formattedDownloadCount = new Intl.NumberFormat("en-US").format(
+          entry.value,
+        );
+        return (
+          <p className="flex gap-1" key={entry.name}>
+            <span style={{ color: entry.stroke }}>{entry.name}</span>
+            {formattedDownloadCount}
+          </p>
+        );
+      })}
+    </div>
+  );
 }
 
 export function App({
@@ -79,6 +118,7 @@ export function App({
         >
           <CartesianGrid />
           <Legend />
+          <Tooltip content={CustomTooltip} />
           <XAxis
             dataKey="_date"
             domain={["dataMin", "dataMax"]}
