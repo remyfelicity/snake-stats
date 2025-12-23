@@ -29,20 +29,18 @@ export function App({
   async function handleAddPackage(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (!input.trim()) return;
-    if (packages.includes(input)) return;
+    const trimmedInput = input.trim();
+
+    if (!trimmedInput) return;
+    if (packages.includes(trimmedInput)) return;
     if (packages.length >= 4) return;
 
-    const newPackages = [...packages, input].toSorted();
-    updateRoute(newPackages);
+    updateRoute([...packages, trimmedInput].toSorted());
     setInput("");
   }
 
   function handleRemovePackage(packageToRemove: string) {
-    const newPackages = packages.filter(
-      (package_) => package_ !== packageToRemove,
-    );
-    updateRoute(newPackages);
+    updateRoute(packages.filter((package_) => package_ !== packageToRemove));
   }
 
   return (
