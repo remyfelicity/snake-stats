@@ -2,7 +2,7 @@ import { XMarkIcon } from "@heroicons/react/20/solid";
 import { navigate } from "astro:transitions/client";
 import { useState, type FormEvent } from "react";
 import { CartesianGrid, Legend, Line, LineChart, XAxis, YAxis } from "recharts";
-import { type getChartData } from "../lib/chart-data";
+import { type ChartData } from "../lib/chart-data";
 
 function updateRoute(packages: string[]) {
   const slug = packages.join("+");
@@ -22,7 +22,7 @@ export function App({
   chartData,
 }: {
   packages: string[];
-  chartData: Awaited<ReturnType<typeof getChartData>>;
+  chartData: ChartData;
 }) {
   const [input, setInput] = useState("");
 

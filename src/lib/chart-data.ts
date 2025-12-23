@@ -52,3 +52,5 @@ export async function getChartData(packages: string[]) {
       ...downloadCounts,
     }));
 }
+
+export type ChartData = Awaited<ReturnType<typeof getChartData>>;
