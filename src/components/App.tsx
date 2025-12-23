@@ -10,6 +10,13 @@ function updateRoute(packages: string[]) {
   navigate(url);
 }
 
+const chartLineColors = [
+  "oklch(58.8% 0.158 241.966)",
+  "oklch(59.6% 0.145 163.225)",
+  "oklch(58.6% 0.253 17.585)",
+  "oklch(66.6% 0.179 58.318)",
+];
+
 export function App({
   packages,
   packageData,
@@ -24,6 +31,7 @@ export function App({
 
     if (!input.trim()) return;
     if (packages.includes(input)) return;
+    if (packages.length >= 4) return;
 
     const newPackages = [...packages, input].toSorted();
     updateRoute(newPackages);
@@ -42,14 +50,14 @@ export function App({
       <h1 className="text-2xl font-thin">PyPI Trends</h1>
       <form onSubmit={(event) => void handleAddPackage(event)}>
         <input
-          className="mt-4 h-12 w-full rounded-full border border-gray-300 px-6 outline-offset-1 outline-blue-500 placeholder:font-light placeholder:text-gray-500"
+          className="mt-4 h-12 w-full rounded-full border border-gray-300 px-6 placeholder:font-light placeholder:text-gray-500"
           onChange={(event) => setInput(event.target.value)}
           placeholder="Enter a PyPI package..."
           value={input}
         />
       </form>
       <div className="mt-4 flex flex-wrap gap-2">
-        {packages.map((package_) => (
+        {packages.map((package_, i) => (
           <div
             className="flex h-12 items-center rounded-full border border-gray-300 pl-4 text-gray-700"
             key={package_}
@@ -93,12 +101,13 @@ export function App({
             }
             width={48}
           />
-          {packages.map((package_) => (
+          {packages.map((package_, i) => (
             <Line
               dataKey={package_}
               dot={false}
               key={package_}
               name={package_}
+              stroke={chartLineColors[i]}
               strokeWidth="2"
               type="monotone"
             />
