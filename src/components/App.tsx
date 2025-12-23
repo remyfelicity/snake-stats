@@ -39,10 +39,10 @@ export function App({
 
   return (
     <div className="mx-auto max-w-5xl p-4">
-      <h1 className="text-xl font-thin">Snake Stats</h1>
+      <h1 className="text-2xl font-thin">PyPI Trends</h1>
       <form onSubmit={(event) => void handleAddPackage(event)}>
         <input
-          className="mt-4 h-16 w-full rounded-full border border-gray-300 px-6 text-lg outline-offset-1 outline-blue-500 placeholder:font-light placeholder:text-gray-500"
+          className="mt-4 h-12 w-full rounded-full border border-gray-300 px-6 outline-offset-1 outline-blue-500 placeholder:font-light placeholder:text-gray-500"
           onChange={(event) => setInput(event.target.value)}
           placeholder="Enter a PyPI package..."
           value={input}

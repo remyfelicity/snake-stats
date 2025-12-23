@@ -1,3 +1,3 @@
-# Snake Stats
+# PyPI Trends
 
 PyPI package comparison
