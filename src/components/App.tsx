@@ -82,7 +82,7 @@ export function App({
           <CartesianGrid />
           <Legend />
           <XAxis
-            dataKey="date"
+            dataKey="_date"
             domain={["dataMin", "dataMax"]}
             tickFormatter={(date) =>
               new Intl.DateTimeFormat("en-US", {

@@ -48,7 +48,7 @@ export async function getChartData(packages: string[]) {
     .entries()
     .toArray()
     .map(([date, downloadCounts]) => ({
-      date: new Date(date).getTime(),
+      _date: new Date(date).getTime(),
       ...downloadCounts,
     }));
 }
