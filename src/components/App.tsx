@@ -2,7 +2,7 @@ import { XMarkIcon } from "@heroicons/react/20/solid";
 import { navigate } from "astro:transitions/client";
 import { useState, type FormEvent } from "react";
 import { CartesianGrid, Legend, Line, LineChart, XAxis, YAxis } from "recharts";
-import { type getPackageData } from "../lib/package-data";
+import { type getChartData } from "../lib/chart-data";
 
 function updateRoute(packages: string[]) {
   const slug = packages.join("+");
@@ -19,10 +19,10 @@ const chartLineColors = [
 
 export function App({
   packages,
-  packageData,
+  chartData,
 }: {
   packages: string[];
-  packageData: Awaited<ReturnType<typeof getPackageData>>;
+  chartData: Awaited<ReturnType<typeof getChartData>>;
 }) {
   const [input, setInput] = useState("");
 
@@ -76,7 +76,7 @@ export function App({
       {packages.length === 0 ? null : (
         <LineChart
           className="mt-8 h-96 w-full md:h-128"
-          data={packageData}
+          data={chartData}
           responsive
         >
           <CartesianGrid />

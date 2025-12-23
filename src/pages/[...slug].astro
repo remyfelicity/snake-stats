@@ -1,14 +1,14 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import { App } from "../components/App";
-import { getPackageData } from "../lib/package-data";
+import { getChartData } from "../lib/chart-data";
 import "../styles/global.css";
 
 export const prerender = false;
 
 const { slug } = Astro.params;
 const packages = slug ? slug.split("+") : [];
-const packageData = await getPackageData(packages);
+const chartData = await getChartData(packages);
 ---
 
 <html lang="en">
@@ -28,6 +28,6 @@ const packageData = await getPackageData(packages);
     <ClientRouter />
   </head>
   <body>
-    <App client:load packages={packages} packageData={packageData} />
+    <App client:load packages={packages} chartData={chartData} />
   </body>
 </html>
