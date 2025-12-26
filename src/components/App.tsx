@@ -14,11 +14,14 @@ import {
 import { type ChartData } from "../lib/chart-data";
 
 const CHART_LINE_COLORS = [
-  "oklch(58.8% 0.158 241.966)",
-  "oklch(66.6% 0.179 58.318)",
-  "oklch(59.6% 0.145 163.225)",
-  "oklch(58.6% 0.253 17.585)",
+  "oklch(62.3% 0.214 259.815)",
+  "oklch(63.7% 0.237 25.331)",
+  "oklch(72.3% 0.219 149.579)",
+  "oklch(66.7% 0.295 322.15)",
+  "oklch(79.5% 0.184 86.047)",
+  "oklch(71.5% 0.143 215.221)",
 ];
+const MAX_PACKAGES = 6;
 
 function updateRoute(packages: string[]) {
   const slug = packages.join("+");
@@ -72,7 +75,7 @@ export function App({
 
     if (!trimmedInput) return;
     if (packages.includes(trimmedInput)) return;
-    if (packages.length >= 4) return;
+    if (packages.length >= MAX_PACKAGES) return;
 
     updateRoute([...packages, trimmedInput].toSorted());
     setInput("");
