@@ -97,7 +97,7 @@ export function App({
         />
       </form>
       <div className="mt-4 flex flex-wrap gap-2">
-        {packages.map((package_, i) => (
+        {packages.map((package_) => (
           <div
             className="flex h-12 items-center rounded-full border border-gray-300 pl-4 text-gray-700"
             key={package_}
