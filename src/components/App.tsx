@@ -20,7 +20,7 @@ const CHART_LINE_COLORS = [
   "oklch(66.7% 0.295 322.15)",
   "oklch(79.5% 0.184 86.047)",
   "oklch(71.5% 0.143 215.221)",
-];
+] as const;
 const MAX_PACKAGES = 6;
 
 function updateRoute(packages: string[]) {
