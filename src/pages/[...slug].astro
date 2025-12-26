@@ -31,7 +31,11 @@ const chartData = await getChartData(packages);
   </head>
   <body>
     <div class="mx-auto max-w-5xl p-4">
-      <h1 class="text-2xl font-thin">PyPI Trends</h1>
+      <h1 class="text-2xl">
+        <a class="font-light underline-offset-4 hover:underline" href="/">
+          PyPI Trends
+        </a>
+      </h1>
       <Input client:load packages={packages} />
       <Chart client:load data={chartData} packages={packages} />
     </div>
