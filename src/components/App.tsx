@@ -67,6 +67,8 @@ export function App({
   chartData: ChartData;
 }) {
   const [input, setInput] = useState("");
+  const [chartedDays, setChartedDays] = useState(180);
+  const chartDataSlice = chartData.slice(-chartedDays);
 
   async function handleAddPackage(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -113,10 +115,26 @@ export function App({
           </div>
         ))}
       </div>
+      <div className="mt-8">
+        <label className="text-lg" htmlFor="chart-date-ranges">
+          Downloads in the past
+        </label>
+        <select
+          className="ml-1 text-lg"
+          id="chart-date-ranges"
+          name="chart-date-ranges"
+          onChange={(event) => setChartedDays(Number(event.target.value))}
+          value={chartedDays}
+        >
+          <option value={30}>30 days</option>
+          <option value={90}>90 days</option>
+          <option value={180}>180 days</option>
+        </select>
+      </div>
       {packages.length === 0 ? null : (
         <LineChart
-          className="mt-8 h-96 w-full md:h-128"
-          data={chartData}
+          className="mt-4 h-96 w-full md:h-128"
+          data={chartDataSlice}
           responsive
         >
           <CartesianGrid />
