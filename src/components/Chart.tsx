@@ -1,3 +1,4 @@
+import { Select } from "@headlessui/react";
 import { useState } from "react";
 import {
   CartesianGrid,
@@ -67,7 +68,7 @@ export function Chart({
         <label className="text-lg" htmlFor="range">
           Downloads in the past
         </label>
-        <select
+        <Select
           className="ml-1 text-lg"
           id="range"
           name="range"
@@ -77,7 +78,7 @@ export function Chart({
           <option value={30}>30 days</option>
           <option value={90}>90 days</option>
           <option value={180}>180 days</option>
-        </select>
+        </Select>
       </div>
       <LineChart
         className="mt-4 h-96 w-full md:h-128"
