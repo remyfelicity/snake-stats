@@ -39,10 +39,10 @@ export function Settings() {
     const deviceThemeIsDark = window.matchMedia(
       "(prefers-color-scheme: dark)",
     ).matches;
-    if (theme === "light" || (theme === "device" && !deviceThemeIsDark)) {
-      document.documentElement.classList.remove("dark");
-    } else {
+    if (theme === "dark" || (theme === "device" && deviceThemeIsDark)) {
       document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
     }
     localStorage.setItem("theme", theme);
   }, [theme]);
