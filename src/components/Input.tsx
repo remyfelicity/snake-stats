@@ -34,7 +34,7 @@ export function Input({ packages }: { packages: string[] }) {
     <>
       <form onSubmit={(event) => void handleAddPackage(event)}>
         <input
-          className="mt-4 h-12 w-full rounded-full border border-gray-300 px-6 placeholder:text-gray-500"
+          className="mt-4 h-12 w-full rounded-full border border-zinc-300 px-6 placeholder:text-zinc-600 dark:border-none dark:bg-zinc-800 dark:placeholder:text-zinc-400"
           onChange={(event) => setInput(event.target.value)}
           placeholder="Enter a PyPI package..."
           value={input}
@@ -43,7 +43,7 @@ export function Input({ packages }: { packages: string[] }) {
       <div className="mt-4 flex flex-wrap gap-2">
         {packages.map((package_) => (
           <div
-            className="flex h-12 items-center rounded-full border border-gray-300 pl-4 text-gray-700"
+            className="flex h-12 items-center rounded-full border border-zinc-300 pl-4 text-zinc-700 dark:border-none dark:bg-zinc-800 dark:text-zinc-300"
             key={package_}
           >
             {package_}
@@ -51,7 +51,7 @@ export function Input({ packages }: { packages: string[] }) {
               className="grid size-12 cursor-pointer place-items-center rounded-full"
               onClick={() => handleRemovePackage(package_)}
             >
-              <XMarkIcon className="size-5 text-gray-500" />
+              <XMarkIcon className="size-5 text-zinc-600 dark:text-zinc-400" />
               <span className="sr-only">Remove</span>
             </button>
           </div>

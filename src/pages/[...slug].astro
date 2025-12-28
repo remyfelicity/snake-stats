@@ -3,6 +3,7 @@ import "@fontsource-variable/inter";
 import { ClientRouter } from "astro:transitions";
 import { Chart } from "../components/Chart";
 import { Input } from "../components/Input";
+import { Settings } from "../components/Settings";
 import { getChartData } from "../lib/chart-data";
 import "../styles/global.css";
 
@@ -29,13 +30,16 @@ const chartData = await getChartData(packages);
 
     <ClientRouter />
   </head>
-  <body>
+  <body class="bg-zinc-100 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100">
     <div class="mx-auto max-w-5xl p-4">
-      <h1 class="text-2xl">
-        <a class="font-light underline-offset-4 hover:underline" href="/">
-          PyPI Trends
-        </a>
-      </h1>
+      <div class="flex items-center justify-between">
+        <h1 class="text-2xl">
+          <a class="font-light underline-offset-4 hover:underline" href="/">
+            PyPI Trends
+          </a>
+        </h1>
+        <Settings client:only="react" />
+      </div>
       <Input client:load packages={packages} />
       <Chart client:load data={chartData} packages={packages} />
     </div>

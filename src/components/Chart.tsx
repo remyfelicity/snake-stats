@@ -34,7 +34,7 @@ function CustomTooltip({
     dateStyle: "medium",
   }).format(new Date(label!));
   return (
-    <div className="rounded border border-gray-300 bg-white p-2">
+    <div className="rounded border border-zinc-300 bg-zinc-100 p-2 shadow dark:border-none dark:bg-zinc-800">
       <p className="font-medium">{formattedDate}</p>
       {payload.map((entry) => {
         const formattedDownloadCount = new Intl.NumberFormat("en-US").format(
