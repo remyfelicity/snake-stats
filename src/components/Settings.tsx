@@ -71,7 +71,7 @@ export function Settings() {
             {themes.map((theme) => (
               <Field key={theme.value}>
                 <Radio
-                  className="flex h-12 cursor-pointer items-center justify-center gap-2 rounded-full px-4 transition duration-200 hover:bg-zinc-200 data-checked:bg-blue-700 data-checked:text-zinc-100 dark:hover:bg-zinc-800 dark:data-checked:bg-blue-100 dark:data-checked:text-zinc-900"
+                  className="flex h-12 cursor-pointer items-center justify-center gap-2 rounded-full px-4 transition duration-200 hover:bg-zinc-200 data-checked:bg-blue-700 data-checked:text-zinc-100 dark:hover:bg-zinc-800 dark:data-checked:bg-blue-300 dark:data-checked:text-zinc-900"
                   value={theme.value}
                 >
                   <theme.icon className="size-5 shrink-0" />
