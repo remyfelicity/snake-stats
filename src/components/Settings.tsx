@@ -49,7 +49,7 @@ export function Settings() {
 
   return (
     <Popover className="relative">
-      <PopoverButton className="flex h-12 cursor-pointer items-center gap-2 rounded-full px-4 transition duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-700">
+      <PopoverButton className="flex h-12 cursor-pointer items-center gap-2 rounded-full px-4 transition duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
         <Cog6ToothIcon className="size-5" />
         <span className="sr-only font-medium md:not-sr-only">Settings</span>
       </PopoverButton>
@@ -63,7 +63,7 @@ export function Settings() {
             Theme
           </label>
           <RadioGroup
-            className="mt-2 grid auto-cols-fr grid-flow-col gap-1 rounded-full bg-zinc-200 p-1 dark:bg-zinc-700"
+            className="mt-2 grid auto-cols-fr grid-flow-col gap-2 rounded-full border border-zinc-300 p-1 dark:border-zinc-700 dark:bg-zinc-900"
             id="theme-radio"
             onChange={setTheme}
             value={theme}
@@ -71,10 +71,10 @@ export function Settings() {
             {themes.map((theme) => (
               <Field key={theme.value}>
                 <Radio
-                  className="flex h-12 cursor-pointer items-center justify-center gap-2 rounded-full px-4 transition duration-200 hover:bg-zinc-300 data-checked:bg-zinc-100 dark:hover:bg-zinc-600 dark:data-checked:bg-zinc-800"
+                  className="flex h-12 cursor-pointer items-center justify-center gap-2 rounded-full px-4 transition duration-200 hover:bg-zinc-200 data-checked:bg-blue-700 data-checked:text-zinc-100 dark:hover:bg-zinc-800 dark:data-checked:bg-blue-100 dark:data-checked:text-zinc-900"
                   value={theme.value}
                 >
-                  <theme.icon className="size-5" />
+                  <theme.icon className="size-5 shrink-0" />
                   {theme.name}
                 </Radio>
               </Field>
