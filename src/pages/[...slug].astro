@@ -28,6 +28,17 @@ const chartData = await getChartData(packages);
       }
     </title>
 
+    <script is:inline>
+      const theme = localStorage.getItem("theme") ?? "device";
+      const deviceThemeIsDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
+      if (theme === "dark" || (theme === "device" && deviceThemeIsDark)) {
+        document.documentElement.classList.add("dark");
+      }
+      localStorage.setItem("theme", theme);
+    </script>
+
     <ClientRouter />
   </head>
   <body class="bg-zinc-100 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100">
