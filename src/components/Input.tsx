@@ -34,7 +34,7 @@ export function Input({ packages }: { packages: string[] }) {
     <>
       <form onSubmit={(event) => void handleAddPackage(event)}>
         <input
-          className="mt-4 h-12 w-full rounded-full border border-zinc-300 px-6 placeholder:text-zinc-600 dark:border-none dark:bg-zinc-800 dark:placeholder:text-zinc-400"
+          className="mt-4 h-12 w-full rounded-full border border-zinc-300 px-6 placeholder:text-zinc-600 dark:border-zinc-700 dark:placeholder:text-zinc-400"
           onChange={(event) => setInput(event.target.value)}
           placeholder="Enter a PyPI package..."
           value={input}
@@ -43,7 +43,7 @@ export function Input({ packages }: { packages: string[] }) {
       <div className="mt-4 flex flex-wrap gap-2">
         {packages.map((package_) => (
           <div
-            className="flex h-12 items-center rounded-full border border-zinc-300 pl-4 text-zinc-700 dark:border-none dark:bg-zinc-800 dark:text-zinc-300"
+            className="flex h-12 items-center rounded-full border border-zinc-300 pl-4 text-zinc-700 dark:border-zinc-700 dark:text-zinc-300"
             key={package_}
           >
             {package_}

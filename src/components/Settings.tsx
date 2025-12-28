@@ -49,7 +49,7 @@ export function Settings() {
 
   return (
     <Popover className="relative">
-      <PopoverButton className="flex h-12 cursor-pointer items-center gap-2 rounded-full px-4 transition duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+      <PopoverButton className="flex h-12 cursor-pointer items-center gap-2 rounded-full px-4 transition duration-200 hover:bg-zinc-200 dark:hover:bg-zinc-700">
         <Cog6ToothIcon className="size-5" />
         <span className="sr-only font-medium md:not-sr-only">Settings</span>
       </PopoverButton>
@@ -58,7 +58,7 @@ export function Settings() {
         className="origin-top-right p-2 transition duration-200 ease-out data-closed:scale-95 data-closed:opacity-0"
         transition
       >
-        <div className="rounded-xl border border-zinc-300 bg-zinc-100 p-4 shadow dark:border-none dark:bg-zinc-800">
+        <div className="rounded-xl border border-zinc-300 bg-zinc-100 p-4 shadow dark:border-zinc-700 dark:bg-zinc-800">
           <label className="font-medium" htmlFor="theme-radio">
             Theme
           </label>
