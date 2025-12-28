@@ -34,7 +34,7 @@ function CustomTooltip({
     dateStyle: "medium",
   }).format(new Date(label!));
   return (
-    <div className="rounded border border-zinc-300 bg-zinc-100 p-2 shadow dark:border-none dark:bg-zinc-800">
+    <div className="rounded border border-zinc-300 bg-zinc-100 p-2 shadow dark:border-none dark:bg-zinc-700">
       <p className="font-medium">{formattedDate}</p>
       {payload.map((entry) => {
         const formattedDownloadCount = new Intl.NumberFormat("en-US").format(
@@ -63,8 +63,8 @@ export function Chart({
 
   if (packages.length === 0) return null;
   return (
-    <>
-      <div className="mt-8">
+    <div className="mt-8 rounded-xl border border-zinc-300 p-4 dark:border-none dark:bg-zinc-800">
+      <div>
         <label className="text-lg" htmlFor="range">
           Downloads in the past
         </label>
@@ -120,6 +120,6 @@ export function Chart({
           />
         ))}
       </LineChart>
-    </>
+    </div>
   );
 }
