@@ -14,11 +14,11 @@ import { type ChartData } from "../lib/chart-data";
 
 const LINE_COLORS = [
   "oklch(62.3% 0.214 259.815)",
+  "oklch(79.5% 0.184 86.047)",
   "oklch(63.7% 0.237 25.331)",
   "oklch(72.3% 0.219 149.579)",
-  "oklch(66.7% 0.295 322.15)",
-  "oklch(79.5% 0.184 86.047)",
-  "oklch(71.5% 0.143 215.221)",
+  "oklch(70.5% 0.213 47.604)",
+  "oklch(62.7% 0.265 303.9)",
 ] as const;
 
 function CustomTooltip({
