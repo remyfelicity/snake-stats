@@ -16,13 +16,13 @@ export function Input({ packages }: { packages: string[] }) {
   async function handleAddPackage(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const trimmedInput = input.trim();
+    const normalizedInput = input.toLowerCase().trim();
 
-    if (!trimmedInput) return;
-    if (packages.includes(trimmedInput)) return;
+    if (!normalizedInput) return;
+    if (packages.includes(normalizedInput)) return;
     if (packages.length >= MAX_PACKAGES) return;
 
-    updateRoute([...packages, trimmedInput].toSorted());
+    updateRoute([...packages, normalizedInput].toSorted());
     setInput("");
   }
 
